@@ -19,12 +19,12 @@ jobs:
 
     steps:
       - name: Check out the mirror
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: mirror
 
       - name: Check out the canonical CVE content
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: cradle-lang/cradle-lib
           path: source
