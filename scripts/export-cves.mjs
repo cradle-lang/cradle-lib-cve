@@ -2,12 +2,14 @@ import {mkdir, writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {exportCves} from './cve-content.mjs';
+import {checkWebsiteMarkdown} from './website-markdown.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 try {
   const args = process.argv.slice(2);
   if (args.length > 1 || args.some(arg => arg !== '--check')) throw new Error('Use library:export-website or library:check');
   const revision = process.env.SOURCE_REVISION || execFileSync('git', ['rev-parse', 'HEAD'], {cwd: root, encoding: 'utf8'}).trim();
   const bundle = await exportCves(root, revision);
+  await checkWebsiteMarkdown(bundle);
   if (!args.includes('--check')) {
     await mkdir(new URL('../website-export/', import.meta.url), {recursive: true});
     await writeFile(new URL('../website-export/bundle.json', import.meta.url), JSON.stringify(bundle, null, 2) + '\n');
