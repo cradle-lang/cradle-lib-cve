@@ -96,6 +96,9 @@ manifests and binaries remain here. Relative links are rewritten to this reposit
 at the exported commit. Local images become source image links rather than embeds.
 Articles without a `Use in a specification` section receive a standard CRADLE
 fragment using their exact CVE identifier; it does not claim runtime verification.
+Export normalizes unordered list markers and supplies `text` for unlabeled code
+fences without changing code contents. Both local checks and CI lint the exported
+articles using the website's Markdown rule snapshot before uploading the bundle.
 
 ## Integration setup and recovery
 
