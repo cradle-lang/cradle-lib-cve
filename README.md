@@ -1,5 +1,11 @@
 # CVE Heuristics
 
+This repository is the authoring source for CVE modules. To add your existing
+module and generate its article, see the single `--generate-index` command in
+[Contributing](./CONTRIBUTING.md). It uses the website's heuristic template.
+The website receives the article and module-folder link; implementation files
+remain here. Maintainer setup is in [the automation reference](./docs/automation.md).
+
 vulnerability heuristics mapped to Common Vulnerabilities and Exposures
 (CVE) identifiers. These stand up vulnerable environments or pin systems to
 vulnerable states for testing and detection validation. Each module carries
