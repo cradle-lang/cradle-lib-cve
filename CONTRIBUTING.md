@@ -37,3 +37,14 @@ import, and binary/image contents are not sent to the generator.
 
 Maintainer setup, validation, recovery and LLM configuration are documented in
 [the automation reference](./docs/automation.md).
+
+## Documentation quality
+
+Run `npm run docs:check` before submitting. It checks Markdown and MDX using the
+same `.markdownlint.json` rules as the website, including new unstaged documents.
+Ignored/generated files and CI dependency checkouts are excluded. Errors identify
+the file, line and rule; fix the source rather than weakening the rules.
+
+GitHub exposes a separate **Docs Quality / markdownlint** check on PRs, main pushes
+and manual runs. `npm run check` also runs it before validation and website export,
+so documentation-quality failures prevent the automated website handoff.
